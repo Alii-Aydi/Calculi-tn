@@ -10,6 +10,7 @@ const lastCl = []
 
 document.querySelector('#ajout').addEventListener('click', ajouterMat)
 function ajouterMat() {
+    changeNth()
     //validation
     if (nom.value == "" || coff.value == "" || n1.value == "" || n2.value == "" || n3.value == "") {
         alert()
@@ -109,6 +110,7 @@ document.querySelector('table').addEventListener('click', function (e) {
 })
 
 document.querySelector('#maj').addEventListener('click', function () {
+    changeNth()
     if (nom.value == "" || coff.value == "" || n1.value == "" || n2.value == "" || n3.value == "") {
         alert()
     } else if (isNaN(parseFloat(coff.value)) || parseFloat(coff.value) > 10 || parseFloat(coff.value) < 1 || isNaN(parseFloat(n1.value)) || parseFloat(n1.value) > 20 || parseFloat(n1.value) < 0 || isNaN(parseFloat(n2.value)) || parseFloat(n2.value) > 20 || parseFloat(n2.value) < 0 || (!n3.disabled && (isNaN(parseFloat(n3.value)) || parseFloat(n3.value) > 20 || parseFloat(n3.value) < 0))) {
@@ -203,6 +205,7 @@ const clear = () => {
 const alert = async () => {
     const ajbtn = document.querySelector('#ajout')
     const majbtn = document.querySelector('#maj')
+    document.documentElement.scrollTop = 0
     document.querySelector('.alert_vide').classList.remove('d-none')
     ajbtn.disabled = true
     majbtn.disabled = true
