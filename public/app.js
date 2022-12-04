@@ -14,7 +14,7 @@ function ajouterMat() {
     //validation
     if (nom.value == "" || coff.value == "" || n1.value == "" || n2.value == "" || n3.value == "") {
         alert()
-    } else if (isNaN(parseFloat(coff.value)) || parseFloat(coff.value) > 10 || parseFloat(coff.value) < 1 || isNaN(parseFloat(n1.value)) || parseFloat(n1.value) > 20 || parseFloat(n1.value) < 0 || isNaN(parseFloat(n2.value)) || parseFloat(n2.value) > 20 || parseFloat(n2.value) < 0 || (!n3.disabled && (isNaN(parseFloat(n3.value)) || parseFloat(n3.value) > 20 || parseFloat(n3.value) < 0))) {
+    } else if (isNaN(parseFloat(coff.value)) || parseFloat(coff.value) > 10 || parseFloat(coff.value) < 0.5 || isNaN(parseFloat(n1.value)) || parseFloat(n1.value) > 20 || parseFloat(n1.value) < 0 || isNaN(parseFloat(n2.value)) || parseFloat(n2.value) > 20 || parseFloat(n2.value) < 0 || (!n3.disabled && (isNaN(parseFloat(n3.value)) || parseFloat(n3.value) > 20 || parseFloat(n3.value) < 0))) {
         alert()
     } else {
         const mat = new Matiere(nom.value, regime.value, parseFloat(coff.value).toFixed(2), parseFloat(n1.value).toFixed(2), parseFloat(n2.value).toFixed(2), parseFloat(n3.value).toFixed(2))
@@ -113,7 +113,7 @@ document.querySelector('#maj').addEventListener('click', function () {
     changeNth()
     if (nom.value == "" || coff.value == "" || n1.value == "" || n2.value == "" || n3.value == "") {
         alert()
-    } else if (isNaN(parseFloat(coff.value)) || parseFloat(coff.value) > 10 || parseFloat(coff.value) < 1 || isNaN(parseFloat(n1.value)) || parseFloat(n1.value) > 20 || parseFloat(n1.value) < 0 || isNaN(parseFloat(n2.value)) || parseFloat(n2.value) > 20 || parseFloat(n2.value) < 0 || (!n3.disabled && (isNaN(parseFloat(n3.value)) || parseFloat(n3.value) > 20 || parseFloat(n3.value) < 0))) {
+    } else if (isNaN(parseFloat(coff.value)) || parseFloat(coff.value) > 10 || parseFloat(coff.value) < 0.5 || isNaN(parseFloat(n1.value)) || parseFloat(n1.value) > 20 || parseFloat(n1.value) < 0 || isNaN(parseFloat(n2.value)) || parseFloat(n2.value) > 20 || parseFloat(n2.value) < 0 || (!n3.disabled && (isNaN(parseFloat(n3.value)) || parseFloat(n3.value) > 20 || parseFloat(n3.value) < 0))) {
         alert()
     } else {
         for (let i = 1; i <= Matiere.nbrMat; i++) {
