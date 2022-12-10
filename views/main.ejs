@@ -1,205 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculi tn</title>
-    <link rel="shortcut icon" href="Local_imgs/plus.png">
-    <script src="https://kit.fontawesome.com/f4f8f1d1df.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QW1J8HHG0D"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-QW1J8HHG0D');
-    </script>
+<% layout('layout/boilerplate') %>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4777406690507746"
         crossorigin="anonymous"></script>
-</head>
 
-<body>
-    <nav class="navbar navbar-dark bg-dark ">
-        <div class="container">
-            <a class="navbar-brand " href="">Bienvenue !</a>
-        </div>
-    </nav>
-    <main>
-        <section class="collector container-sm mt-5">
-            <% if (success.length) { %>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <%= success %>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
-                <% } %>
-
-
-                    <% if (error.length) { %>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <%= error %>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                        </div>
-                        <% } %>
-                            <h1 class="display-4 mb-5">Calculer votre Moyenne</h1>
-                            <div class="alert alert-danger alert_vide d-none" role="alert">
-                                Eshec de validation ! Esseyer d'entrer des donnes valides
-                            </div>
-                            <div class="row">
-                                <div class="form col-md-4">
-                                    <div class="form-group">
-                                        <label for="nom">Nom du matiere</label>
-                                        <input type="text" class="form-control" id="nom"
-                                            aria-describedby="Nom du matiere">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="regime">Choisir votre regime</label>
-                                        <select id="regime" class="form-control">
-                                            <option value="r1">Note 1 * 0.1 + Note 2 * 0.2 + Note 3 * 0.7</option>
-                                            <option value="r2">Note 1 * 0.2 + Note 2 * 0.4 + Note 3 * 0.4</option>
-                                            <option value="r3">Note 1 * 0.3 + Note 2 * 0.7</option>
-                                            <option value="r4">(Note 1 + Note 2 + Note 3 * 2)/4</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="coff">Coefficient</label>
-                                        <input type="text" class="form-control" id="coff" aria-describedby="Cofficient">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="n1">Note 1</label>
-                                        <input type="text" class="form-control" id="n1" aria-describedby="Note 1">
-                                        <small class="form-text text-muted">Si vous ne savez pas le note Laissez-le
-                                            10</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="n2">Note 2</label>
-                                        <input type="text" class="form-control" id="n2" aria-describedby="Note 2">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="n3">Note 3</label>
-                                        <input type="text" class="form-control" id="n3" aria-describedby="Note 3">
-                                    </div>
-                                    <button id="ajout" type="button" class="btn btn-success">Ajouter</button>
-                                    <button id="maj" type="button" class="btn btn-info d-none">Maj</button>
-                                    <button id="anul" type="button" class="btn btn-danger">Anuler</button>
-                                </div>
-                                <div class="col-md-8 mt-5 mt-md-0 list d-table">
-                                    <table class="table mb-3">
-                                        <thead class="thead-dark">
-                                            <tr>
-                                                <th scope="col">Num</th>
-                                                <th scope="col">Nom</th>
-                                                <th scope="col">Regime</th>
-                                                <th scope="col">Coefficient</th>
-                                                <th scope="col">Note_1</th>
-                                                <th scope="col">Note_2</th>
-                                                <th scope="col">Note_3</th>
-                                                <th scope="col">Moyenne</th>
-                                                <th scope="col"></th>
-                                                <th scope="col"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-                                    <div class="form-group w-50">
-                                        <label for="mg">Moyenne generale</label>
-                                        <output type="text" class="form-control" id="mg"
-                                            aria-describedby="Moyenne generale">
-                                    </div>
-                                    <a href="" id="clear" class="btn btn-outline-dark">Clear</a>
-                                </div>
-                            </div>
-        </section>
-        <section class="about container-sm mt-5">
-            <h1 class="display-4">A propos de notre application</h1>
-            <div class="row mt-5">
-                <img class="img-fluid col-md-6"
-                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxOTIwIDEwODAiIHZpZXdCb3g9IjAgMCAxOTIwIDEwODAiPjxwYXRoIGZpbGw9IiMyYTk0ZjQiIGQ9Ik0yMDMuMSA1MzYuNGMtNjcgMzYyLjcgMjk3LjEgNjUxIDYzNi43IDM4OC4zIDU5NC4xLTQ1OS41IDMwMC0yNzguMyA2MTktMjI0LjcgMzE5IDUzLjYgMzQ3LjYtNDgxLjQgOTEuNS00NzQuNXMtMzM0LjggMjIwLjEtNjAyLjQgMjMuNy02ODguOS0xNS03NDQuOCAyODcuMnoiIG9wYWNpdHk9Ii4xIiBjbGFzcz0iY29sb3IyYTk0ZjQgc3ZnU2hhcGUiLz48Y2lyY2xlIGN4PSI4OTcuNSIgY3k9IjY2Ny4xIiByPSI0MTIuOSIgZmlsbD0iI2NjZTlmZiIgY2xhc3M9ImNvbG9yY2NlOWZmIHN2Z1NoYXBlIi8+PGNpcmNsZSBjeD0iNDM5LjMiIGN5PSI1MTUuNyIgcj0iNjEuNiIgZmlsbD0iIzBiNDg3MCIgY2xhc3M9ImNvbG9yMGI0ODcwIHN2Z1NoYXBlIi8+PGNpcmNsZSBjeD0iNDc3LjgiIGN5PSIzNzIuMyIgcj0iMzIuNiIgZmlsbD0iI2ZmYmU1NSIgY2xhc3M9ImNvbG9yZmZiZTU1IHN2Z1NoYXBlIi8+PGNpcmNsZSBjeD0iNTQzLjEiIGN5PSI0NjkiIHI9IjEwLjgiIGZpbGw9IiMwYjQ4NzAiIGNsYXNzPSJjb2xvcjBiNDg3MCBzdmdTaGFwZSIvPjxkZWZzPjxwYXRoIGlkPSJhIiBkPSJNMTMxMC40IDY2Ny4xYzAgMjI4LTE4NC45IDQxMi45LTQxMi45IDQxMi45UzQ4NC43IDg5NS4xIDQ4NC43IDY2Ny4xIDY0MS45IDQ1IDg2OS45IDQ1YzE2OS4yIDAgNTQyLjYgNC4xIDYxNC4yIDIwOS4yIDI0LjkgNzEuNC0xNzMuNyAzNTQuMS0xNzMuNyA0MTIuOXoiIGZpbGw9IiMwMDAwMDAiIGNsYXNzPSJjb2xvcjAwMCBzdmdTaGFwZSIvPjwvZGVmcz48Y2xpcFBhdGggaWQ9ImIiPjx1c2Ugb3ZlcmZsb3c9InZpc2libGUiIHhsaW5rOmhyZWY9IiNhIi8+PC9jbGlwUGF0aD48ZyBjbGlwLXBhdGg9InVybCgjYikiIGZpbGw9IiMwMDAwMDAiIGNsYXNzPSJjb2xvcjAwMCBzdmdTaGFwZSI+PHBhdGggZmlsbD0iIzBiNDg3MCIgZD0iTTcyNi44IDI2NC45cy0xMC40LTgzLjcgMTUuOC0xMjEuOWMzNC4yLTQ5LjcgMTMxLjItNjMuNiAxNzcuNS0zNi4yIDUxLjIgMzAuMyA5MiAxMDguNSA3NC4xIDE3NyA3Ni4xIDIxLjkgOTQuMyAxMDguNCA0MC44IDEzMC42bDQ1LjggOTguMWMyOC41IDYxLS42IDEzMy45LTY2IDE2NS40bC0xMTcuMSA1Ni40cy0yMTYuMSAzNC0yNTguOS02Ni4xYy00Mi44LTEwMC4xIDQxLTE3My4xIDQxLTE3My4xcy02OC40LTc2LTM1LjgtMTUwLjFjMzIuNy03NC4xIDgyLjgtODAuMSA4Mi44LTgwLjF6IiBjbGFzcz0iY29sb3IwYjQ4NzAgc3ZnU2hhcGUiLz48cGF0aCBmaWxsPSIjZmZlM2NhIiBkPSJNMTA1OS4xIDU1MS43czE5Ni40IDMxLjEgMjQ5LjYgMjguOGM0MS43IDIuMyAxMTAuNC0yMjYgMTE2LjQtMjQwIDMzLjMtMjAuOSA0MS42LTQ5LjUgNDEuMS02NS4zLS41LTE1LjgtNDMtMjkuMS00Ny4xLTIxLjEgNy0yMC45IDguNi0yNy41IDEwLjUtMzQuNyA0LTE0LjktNy40LTI2LjItMjMuNyAyOS45LTE2LjEgNTUuMy0xNC41IDQ2LjItMTguNCA2NS43LTI2LjMgNTAuNS05NC4xIDE2OC4zLTk4LjcgMTg2LjEtODcuOS0yLjEtMjM2LjgtMzYuMy0yMzYuOC0zNi4zbDcuMSA4Ni45ek02NjUuOCA0OTguNHMtOTMuMSAxNzQuNy0xMTEuMiAyMjMuNWMtMTggMzYuMyAxNjkgMjAzLjUgMTc5LjUgMjE1LjYgNi41IDM5LjcgMjMuNyA1My40IDM4LjMgNjAuNSAxNC42IDcgNDIuOS0yNC43IDM3LjItMzIuMSAxNi41IDE2LjIgMjEuOSAyMC43IDI3LjcgMjUuOSAxMi4xIDEwLjYgMjYuOCA1LjgtMTguMy0zNS40LTQ0LjUtNDAuNy0zNi43LTM0LjktNTMuMS00Ny43LTM2LjItNDcuNS0xMTguMi0xNjQuMS0xMzIuNy0xNzYuNyAzNS4zLTc3LjcgMTIzLjMtMTk1IDEyMy4zLTE5NWwtOTAuNy0zOC42eiIgY2xhc3M9ImNvbG9yZmZlM2NhIHN2Z1NoYXBlIi8+PHBhdGggZmlsbD0iIzBiNDg3MCIgZD0ibTg3OS4xIDEwODAgNTQuMy0yMzUuNiA5Mi41IDU1LjRzNy41IDY3LjggMTcuMSAxNTUuN2MwIDAtNzIuNCAyNi4yLTE2My45IDI0LjUiIGNsYXNzPSJjb2xvcjBiNDg3MCBzdmdTaGFwZSIvPjxwYXRoIGZpbGw9IiMwZTUzOGMiIGQ9Ik05NzIuNCAxMDcyLjhjMTQuOC04OS40IDI2LjYtMTYxLjQgMjYuNi0xNjEuNHMtMjUzLjEtMzUuMi0yNTQgMzRjLS4zIDIxLjIgMi4yIDYyIDguMSAxMDguNiAxMzMuMSA0Mi44IDIxOS4zIDE4LjggMjE5LjMgMTguOHoiIGNsYXNzPSJjb2xvcjBlNTM4YyBzdmdTaGFwZSIvPjxwYXRoIGZpbGw9IiNmZmJlNTUiIGQ9Ik05NzQuMyA2MTcuMWMtNy41IDE3LjQgNDkuNCAyNTkgNTguOSAzMTQuNyAwIDAtMS4yLS4yLTMuNS0uNi0yNC43LTMuNy0xNzUuOC0yMy42LTI5Ny45IDI3LjNsLTExLjItMzQxLjMtLjUtMTIuN3MwLTEyLjkgMS4yLTMyLjZ2LS4yYzIuOC00MC42IDExLjItMTA5LjEgMzcuMy0xNTMuMSAxMy41LTIyLjggMzEuNC0zOS4xIDU1LjktNDEuNSA3NS45LTcuNSA3NS41IDIzLjYgMTQ2IDQxbDExNC40IDI4LjRzLTEyLjggODguNyAwIDExNS4xaC03OS40YzAtLjEtMTMuOCAzNy45LTIxLjIgNTUuNXoiIGNsYXNzPSJjb2xvcmZmYmU1NSBzdmdTaGFwZSIvPjxwYXRoIGZpbGw9IiNmZmUzY2EiIGQ9Ik05MzAuNyAxNDkuNHM2OS42IDEwNC40IDMzLjEgMTU1LjRDOTM2LjUgMzQzIDg5MC43IDM2MyA4OTAuNyAzNjN2NTVzLTUuNSA0LjktMTUuMSA1LjRjLTE2LjcuOS02MS4xLTI1LjktNjEuMS0yNS45VjE4MC45bDExNi4yLTMxLjV6IiBjbGFzcz0iY29sb3JmZmUzY2Egc3ZnU2hhcGUiLz48cGF0aCBmaWxsPSIjZmZiZTU1IiBkPSJNNzIwLjQgNjMxLjJzMTA1LTEyMS43IDg4LjMtMTgwLjNjLTE2LjctNTguNi05Ni4xLTM4LjUtMTQwLjUgMjktNDQuNCA2Ny41LTYyIDkwLjYtNjIgOTAuNnM0NS43IDYxLjggMTE0LjIgNjAuN3oiIGNsYXNzPSJjb2xvcmZmYmU1NSBzdmdTaGFwZSIvPjxwYXRoIGZpbGw9IiMwYjQ4NzAiIGQ9Ik05MzAuNSAxMzkuNXM1LjQgMTA4LjctNDcgMTM1LTEyLjggOTEuMS02Mi43IDEzOS41Yy0xNC44IDE0LjMtMzYuOCAxMS45LTUzLjcgNi45LTI0LjItNy4yLTUxLjktMi02OC44IDE1LjUtMS42IDEuNy0zLjEgMy41LTQuMyA1LjMtNjQuOC00Mi44IDk5LjQtMjgwLjcgOTkuNC0yODAuN2wxMzcuMS0yMS41eiIgY2xhc3M9ImNvbG9yMGI0ODcwIHN2Z1NoYXBlIi8+PC9nPjxwYXRoIGZpbGw9IiNmZmJlNTUiIGQ9Ik0xMTIwLjggNzMzLjhjLTIyLjcgMzUuMS0zNS45IDc2LjktMzUuOSAxMjEuOCAwIDEyMy45IDEwMC41IDIyNC40IDIyNC40IDIyNC40czIyNC40LTEwMC41IDIyNC40LTIyNC40LTEwMC41LTIyNC40LTIyNC40LTIyNC40Yy01NC43IDAtMTA0LjkgMTkuNi0xNDMuOCA1Mi4ybC03Ni4xLTIwLjEgMzEuNCA3MC41ek0xMzg0LjIgNjEuNmMwIDM0LTI3LjYgNzcuOS02MS42IDc3LjlTMTI2MSA5NS42IDEyNjEgNjEuNiAxMjg4LjUgMCAxMzIyLjYgMHM2MS42IDI3LjYgNjEuNiA2MS42eiIgY2xhc3M9ImNvbG9yZmZiZTU1IHN2Z1NoYXBlIi8+PHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTEzMjQuNSAxNjcuNGMtNi4zIDAtMTIuMi00LjQtMTcuNC0xMy4xLTMuNy02LjItLjktMjQuOSAyLjEtNDQuNy44LTUuMiAxLjUtMTAuMyAyLjItMTQuOS00LjQtMTMuNy0zLjQtMjIuNi0xLjUtMjUuMi43LTEgMS43LTEuMyAyLjYtLjkgMS44LjkgMi44IDQuNyAyLjggMTAuOCAwIDQtLjUgOS4xLTEuMiAxNC44LjMgMSAuNyAyIDEuMSAzLjEgMy42IDkuNiA3LjIgNy41IDguNCA2LjcgMi45LTEuNyA1LjctNi41IDcuOC0xMi0uOC0xMi40LjEtMjEuMyAxLjUtMjMuOS43LTEuNCAxLjYtMS41IDItMS41IDEuNC4xIDIuMSAyIDIuMyAyLjYgMS44IDQuOC4yIDE0LjktMy4xIDIzLjUgMSAxNC41IDQuNCAzNC40IDEyLjggNTUuM2wuNC45LS41LjhjLS40LjctOS43IDE3LjItMjIgMTcuNC0uMS4zLS4yLjMtLjMuM3ptLTExLjMtNjcuNGMtLjUgMy4zLTEgNi43LTEuNSAxMC4yLTIuNiAxNy40LTUuNiAzNy0yLjYgNDIgNC44IDcuOSAxMCAxMS45IDE1LjUgMTEuOCA5LjUtLjIgMTcuNC0xMiAxOS40LTE1LjItNy4zLTE4LjQtMTAuOS0zNi40LTEyLjMtNTAuOC0yLjEgNC4yLTQuNiA3LjYtNy4yIDkuMS0yLjQgMS42LTcuMiAyLjYtMTEuMy03LjF6bS0xLjYtMjhjLS43IDEuMy0xLjYgNi42LjUgMTUuNy4zLTMuMS41LTUuOS41LTguMiAwLTQuNy0uNy02LjgtMS03LjV6bTIzLjEtMS4yYy0uNiAyLTEuMiA3LTEuMSAxNC4yIDEuNi01LjggMi4yLTExLjQgMS4xLTE0LjJ6IiBjbGFzcz0iY29sb3JmZmYgc3ZnU2hhcGUiLz48cGF0aCBmaWxsPSIjMGI0ODcwIiBkPSJNMTMyMi42IDE3NS44Yy0xMi40IDAtMjIuNy05LjQtMjMuNy0yMS43bC0yLjEtMjMuNiA2LjMgMi40YzEyLjkgNC45IDI3LjEgNC44IDM5LjktLjNsNS4zLTIuMS0yLjEgMjMuNmMtMSAxMi4zLTExLjMgMjEuNy0yMy42IDIxLjd6IiBjbGFzcz0iY29sb3IwYjQ4NzAgc3ZnU2hhcGUiLz48cGF0aCBmaWxsPSIjZmZiZTU1IiBkPSJNMTU3Ny4zIDE3OS4zYy03LjIgMTcuMS0zMC40IDMzLjQtNDcuNSAyNi4ycy0yMS43LTM1LjEtMTQuNS01Mi4zYzcuMi0xNy4xIDI2LjktMjUuMiA0NC4xLTE4czI1LjEgMjYuOSAxNy45IDQ0LjF6IiBjbGFzcz0iY29sb3JmZmJlNTUgc3ZnU2hhcGUiLz48cGF0aCBmaWxsPSIjZmZmZmZmIiBkPSJNMTUyNC44IDIxOS45Yy0zLjItMS4zLTUuMi00LjgtNi0xMC4zLS42LTMuOSA0LjgtMTIuNyAxMC41LTIyIDEuNS0yLjQgMi45LTQuOCA0LjItNyAuNy03LjggMy4xLTEyLjEgNC42LTEzIC42LS40IDEuMS0uMyAxLjUuMS43LjguNCAzLS45IDYtLjggMi0yLjIgNC41LTMuOCA3LjIgMCAuNi0uMSAxLjItLjEgMS44LS4yIDUuNiAyIDUuMyAyLjggNS4yIDEuOC0uMyA0LjItMi4xIDYuNS00LjQgMi4yLTYuNCA0LjYtMTAuNyA1LjgtMTEuNy42LS41IDEuMS0uNCAxLjMtLjMuNy40LjYgMS40LjYgMS44LS4xIDIuOC0zLjEgNy41LTYuNiAxMS4yLTIuNiA3LjUtNS4xIDE4LjItNS4yIDMwLjV2LjVsLS40LjNjLS4zLjMtOC41IDYuNi0xNC43IDQuMWgtLjF6bTguNi0zNi4zYy0uOSAxLjYtMS45IDMuMi0yLjkgNC44LTUgOC4yLTEwLjYgMTcuNS0xMC4yIDIwLjYuNyA1IDIuNSA4LjEgNS4zIDkuMiA0LjggMS45IDExLjMtMi40IDEzLTMuNi4yLTEwLjggMi4yLTIwLjYgNC42LTI4LjItMS45IDEuNy0zLjkgMi44LTUuNSAzLjEtMS43LjMtNC4zLS4yLTQuMy01Ljl6bTUuMS0xNC41Yy0uNi41LTIuMiAzLTMgOCAuOC0xLjUgMS41LTIuOSAyLTQgLjktMi4zIDEuMS0zLjUgMS00em0xMS45IDQuM2MtLjcuOS0yLjEgMy4zLTMuNSA2LjkgMi0yLjUgMy41LTUuMiAzLjUtNi45eiIgY2xhc3M9ImNvbG9yZmZmIHN2Z1NoYXBlIi8+PHBhdGggZmlsbD0iIzBiNDg3MCIgZD0iTTE1MjIuMSAyMjMuN2MtNi4yLTIuNi05LjQtOS41LTcuNC0xNS45bDQtMTIuMyAyLjcgMi41YzUuNCA1LjIgMTIuNiA4LjEgMjAuMSA4LjNsMy4xLjEtNiAxMS40Yy0zLjEgNi0xMC4zIDguNS0xNi41IDUuOXoiIGNsYXNzPSJjb2xvcjBiNDg3MCBzdmdTaGFwZSIvPjxwYXRoIGZpbGw9IiNmZmJlNTUiIGQ9Ik0xMzM3LjYgMjc3LjFjMS4yIDEzLjgtOC4zIDMyLjYtMjIuMSAzMy44LTEzLjggMS4yLTI2LjYtMTUuNS0yNy44LTI5LjNzOC45LTI2IDIyLjctMjcuMiAyNS45IDguOSAyNy4yIDIyLjd6IiBjbGFzcz0iY29sb3JmZmJlNTUgc3ZnU2hhcGUiLz48cGF0aCBmaWxsPSIjZmZmZmZmIiBkPSJNMTMxNy4yIDMyMi4xYy0yLjYuMi01LjEtMS4zLTcuNS00LjctMS43LTIuNC0xLjMtMTAuMS0uOC0xOC4yLjEtMi4xLjItNC4yLjMtNi4xLTIuMy01LjQtMi4yLTktMS41LTEwLjEuMy0uNC42LS42IDEtLjUuOC4zIDEuMyAxLjggMS41IDQuMy4xIDEuNi4xIDMuNyAwIDYuMWwuNiAxLjJjMS44IDMuOCAzLjIgMi44IDMuNiAyLjQgMS4xLS44IDIuMS0yLjggMi43LTUuMS0uOC01LS43LTguNi0uMy05LjcuMi0uNi42LS43LjgtLjcuNiAwIC45LjcgMSAxIC45IDEuOS42IDYtLjQgOS43LjkgNS44IDMgMTMuOCA3LjIgMjEuOWwuMi40LS4yLjRjLS4xLjMtMy4zIDcuMy04LjMgNy45LjItLjIuMi0uMi4xLS4yem0tNy0yNi45Yy0uMSAxLjMtLjIgMi44LS4yIDQuMi0uNCA3LjEtLjkgMTUuMi41IDE3LjEgMi4yIDMgNC41IDQuNSA2LjcgNC4yIDMuOC0uNCA2LjYtNS41IDcuMy02LjktMy42LTcuMi01LjctMTQuNC02LjktMjAuMi0uNyAxLjgtMS42IDMuMi0yLjYgNC0uOS44LTIuOCAxLjQtNC44LTIuNHptLTEuNy0xMS4zYy0uMy42LS40IDIuOC44IDYuMyAwLTEuMyAwLTIuNC0uMS0zLjMtLjItMS45LS41LTIuNy0uNy0zem05LjQtMS4zYy0uMi44LS4yIDIuOS4xIDUuOC40LTIuNC40LTQuNy0uMS01Ljh6IiBjbGFzcz0iY29sb3JmZmYgc3ZnU2hhcGUiLz48cGF0aCBmaWxsPSIjMGI0ODcwIiBkPSJNMTMxNi44IDMyNS42Yy01IC41LTkuNS0zLTEwLjQtNy45bC0xLjctOS41IDIuNi43YzUuNCAxLjUgMTEuMi45IDE2LjItMS42bDIuMS0xLjF2OS42YzAgNS4yLTMuOCA5LjQtOC44IDkuOHoiIGNsYXNzPSJjb2xvcjBiNDg3MCBzdmdTaGFwZSIvPjwvc3ZnPg=="
-                    alt="">
-                <p class="lead col-md-6 mt-4 mt-md-0">
-                    Cette application est spécifiquement destinée aux étudiants universitaires pour faciliter le calcul
-                    de
-                    la
-                    moyenne générale individuellement pour chaque semestre. Cela ne veut pas dire que ce service ne
-                    s'adresse pas
-                    également aux élèves des écoles secondaires, collèges et même élémentaires. Ce qui distingue cette
-                    application est la facilité d'utilisation et la simplicité de l'interface graphique pour assurer une
-                    expérience fluide et sans problèmes.
-                    <br><br>
-                    Merci d'utiliser notre application.
-                </p>
+    <section class="collector container-sm mt-5">
+        <% if (success.length) { %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <%= success %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
             </div>
-        </section>
-    </main>
-    <footer class="bg-dark mt-5 text-white">
-        <div class="container p-4">
-            <section class="mb-4 text-center">
-                <!-- Facebook -->
-                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/aliabdelkader.aidi"
-                    role="button"><i class="fab fa-facebook-f"></i></a>
+            <% } %>
 
-                <!-- Twitter -->
-                <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/AliAydi10" role="button"><i
-                        class="fab fa-twitter"></i></a>
 
-                <!-- Instagram -->
-                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/aliabdelkaderaydi/"
-                    role="button"><i class="fab fa-instagram"></i></a>
-
-                <!-- Linkedin -->
-                <!-- <a class="btn btn-outline-light btn-floating m-1" href="#!"
-                    role="button"><i class="fab fa-linkedin-in"></i></a> -->
-
-                <!-- Github -->
-                <!-- <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                        class="fab fa-github"></i></a> -->
-                <div class="text-light mt-3">Email : aliayditn02@gmail.com</div>
-            </section>
-            <!-- Section: Form -->
-            <section class="">
-                <form action="/" method="post">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-auto">
-                            <p class="pt-2">
-                                <strong>Inscrivez-vous à notre newsletter</strong>
-                            </p>
-                        </div>
-                        <div class="col-md-5 col-12">
-                            <div class="form-outline form-white mb-4">
-                                <input name="email" type="email" id="form5Example21" class="form-control" required />
-                                <label class="form-label" for="form5Example21">Email address</label>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-outline-light mb-4">
-                                Subscribe
+                <% if (error.length) { %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <%= error %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
                             </button>
-                        </div>
                     </div>
-                </form>
-                <!-- Section: Form -->
-            </section>
-            <div class="text-center p-3">
-                © 2022 Copyright:
-                <a class="text-white" href="">Ali Aydi</a>
-            </div>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
-    <script type="module" src="app.js"></script>
-</body>
-
-</html>
+                    <% } %>
+                        <h1 class="display-4 mb-5">Calculer votre Moyenne</h1>
+                        <div class="alert alert-danger alert_vide d-none" role="alert">
+                            Eshec de validation ! Esseyer d'entrer des donnes valides
+                        </div>
+                        <div class="row">
+                            <div class="form col-md-4">
+                                <div class="form-group">
+                                    <label for="nom">Nom du matiere</label>
+                                    <input type="text" class="form-control" id="nom" aria-describedby="Nom du matiere">
+                                </div>
+                                <div class="form-group">
+                                    <label for="regime">Choisir votre regime</label>
+                                    <select id="regime" class="form-control">
+                                        <option value="r1">Note 1 * 0.1 + Note 2 * 0.2 + Note 3 * 0.7</option>
+                                        <option value="r2">Note 1 * 0.2 + Note 2 * 0.4 + Note 3 * 0.4</option>
+                                        <option value="r3">Note 1 * 0.3 + Note 2 * 0.7</option>
+                                        <option value="r4">(Note 1 + Note 2 + Note 3 * 2)/4</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="coff">Coefficient</label>
+                                    <input type="text" class="form-control" id="coff" aria-describedby="Cofficient">
+                                </div>
+                                <div class="form-group">
+                                    <label for="n1">Note 1</label>
+                                    <input type="text" class="form-control" id="n1" aria-describedby="Note 1">
+                                    <small class="form-text text-muted">Si vous ne savez pas le note Laissez-le
+                                        10</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="n2">Note 2</label>
+                                    <input type="text" class="form-control" id="n2" aria-describedby="Note 2">
+                                </div>
+                                <div class="form-group">
+                                    <label for="n3">Note 3</label>
+                                    <input type="text" class="form-control" id="n3" aria-describedby="Note 3">
+                                </div>
+                                <button id="ajout" type="button" class="btn btn-success">Ajouter</button>
+                                <button id="maj" type="button" class="btn btn-info d-none">Maj</button>
+                                <button id="anul" type="button" class="btn btn-danger">Anuler</button>
+                            </div>
+                            <div class="col-md-8 mt-5 mt-md-0 list d-table">
+                                <table class="table mb-3">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Num</th>
+                                            <th scope="col">Nom</th>
+                                            <th scope="col">Regime</th>
+                                            <th scope="col">Coefficient</th>
+                                            <th scope="col">Note_1</th>
+                                            <th scope="col">Note_2</th>
+                                            <th scope="col">Note_3</th>
+                                            <th scope="col">Moyenne</th>
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                <div class="form-group w-50">
+                                    <label for="mg">Moyenne generale</label>
+                                    <output type="text" class="form-control" id="mg"
+                                        aria-describedby="Moyenne generale">
+                                </div>
+                                <a href="" id="clear" class="btn btn-outline-dark">Clear</a>
+                            </div>
+                        </div>
+    </section>

@@ -9,6 +9,7 @@ const MongoStore = require('connect-mongo')
 const ExpressError = require('./utils/expressError')
 const { validSub } = require('./middelwares')
 const mongoSanitize = require('express-mongo-sanitize')
+const ejsMate = require('ejs-mate')
 if (process.env.NODE_ENV != "production") {
     require('dotenv').config();
 }
@@ -37,6 +38,7 @@ app.use(mongoSanitize({
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
+app.engine('ejs', ejsMate)
 
 
 //session and flash config
@@ -66,6 +68,7 @@ app.use((req, res, next) => {
     next()
 })
 
+// routs
 
 app.get('/', (req, res) => {
     res.render('main')
@@ -81,6 +84,18 @@ app.post('/', validSub, async (req, res) => {
         req.flash('error', e.message)
     }
     res.redirect('/')
+})
+
+app.get('/about', (req, res) => {
+    res.render('about')
+})
+
+app.get('/Privacy-Policy', (req, res) => {
+    res.render('privacyPolicy')
+})
+
+app.get('/TermsAndConditions', (req, res) => {
+    res.render('termsAndConditions')
 })
 
 //Error's midellwares
