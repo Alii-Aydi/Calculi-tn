@@ -41,6 +41,12 @@ footer {
     table {
         font-size: 0.5em;
     }
+
+    .form input,
+    .form label,
+    .form .btn {
+        font-size: 0.75em;
+    }
 }
 
 .collector input,
@@ -79,6 +85,22 @@ footer {
     background-color: rgb(27, 103, 138);
 }
 
+#maj {
+    background-color: rgb(27, 103, 138);
+}
+
 #anul {
     background-color: rgb(1, 37, 53);
+}
+
+#ajout:hover {
+    background-color: rgb(95, 182, 223)
+}
+
+#anul:hover {
+    background-color: rgb(95, 182, 223);
+}
+
+#maj:hover {
+    background-color: rgb(95, 182, 223);
 }
