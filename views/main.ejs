@@ -23,7 +23,7 @@
                     <% } %>
                         <h1 class="display-4">Calculer votre Moyenne</h1>
                         <p class="lead mb-5">
-                            Etudiant universitaire, élève d'école secondaire ou collège? Vous êtes au bon endroit.
+                            Etudiant universitaire, Vous souhaitez calculer votre moyenne? Vous êtes au bon endroit.
                         </p>
                         <div class="alert alert-danger alert_vide d-none" role="alert">
                             Eshec de validation ! Esseyer d'entrer des donnes valides
@@ -37,10 +37,10 @@
                                 <div class="form-group">
                                     <label for="regime">Choisir votre regime</label>
                                     <select id="regime" class="form-control">
-                                        <option value="r1">Note 1 * 0.1 + Note 2 * 0.2 + Note 3 * 0.7</option>
-                                        <option value="r2">Note 1 * 0.2 + Note 2 * 0.4 + Note 3 * 0.4</option>
-                                        <option value="r3">Note 1 * 0.3 + Note 2 * 0.7</option>
-                                        <option value="r4">(Note 1 + Note 2 + Note 3 * 2)/4</option>
+                                        <option value="r1">TP * 10% + DS * 20% + Examen * 70%</option>
+                                        <option value="r2">TP * 20% + DS * 40% + Examen * 40%</option>
+                                        <option value="r3">TP * 30% + DS * 70%</option>
+                                        <option value="r4">(TP + DS + Examen * 2)/4</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -48,17 +48,17 @@
                                     <input type="text" class="form-control" id="coff" aria-describedby="Cofficient">
                                 </div>
                                 <div class="form-group">
-                                    <label for="n1">Note 1</label>
+                                    <label for="n1">TP</label>
                                     <input type="text" class="form-control" id="n1" aria-describedby="Note 1">
                                     <small class="form-text text-muted">Si vous ne savez pas le note Laissez-le
                                         10</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="n2">Note 2</label>
+                                    <label for="n2">DS</label>
                                     <input type="text" class="form-control" id="n2" aria-describedby="Note 2">
                                 </div>
                                 <div class="form-group">
-                                    <label for="n3">Note 3</label>
+                                    <label for="n3">Examen</label>
                                     <input type="text" class="form-control" id="n3" aria-describedby="Note 3">
                                 </div>
                                 <button id="ajout" type="button" class="btn btn-success">Ajouter</button>
@@ -68,14 +68,14 @@
                             <div class="col-md-8 mt-5 mt-md-4 list d-table">
                                 <table class="table mb-3">
                                     <thead class="thead-dark">
-                                        <tr>
+                                        <tr class="text-center">
                                             <th scope="col">Num</th>
                                             <th scope="col">Nom</th>
                                             <th scope="col">Regime</th>
-                                            <th scope="col">Coefficient</th>
-                                            <th scope="col">Note_1</th>
-                                            <th scope="col">Note_2</th>
-                                            <th scope="col">Note_3</th>
+                                            <th scope="col">Coeff</th>
+                                            <th scope="col">TP</th>
+                                            <th scope="col">DS</th>
+                                            <th scope="col">Examen</th>
                                             <th scope="col">Moyenne</th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
