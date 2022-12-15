@@ -57,3 +57,28 @@ footer {
     border-radius: 2em;
     border: none;
 }
+
+#particles-js {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: fixed;
+    background-size: cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    z-index: -100;
+}
+
+.details {
+    border-radius: 2em;
+    background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.8)), url('');
+}
+
+#ajout {
+    background-color: rgb(27, 103, 138);
+}
+
+#anul {
+    background-color: rgb(1, 37, 53);
+}
