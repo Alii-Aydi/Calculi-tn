@@ -38,7 +38,7 @@ footer {
 }
 
 table tr td {
-    overflow-wrap: break-word;
+    overflow: hidden;
 }
 
 @media (max-width:1000px) {
