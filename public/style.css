@@ -37,6 +37,15 @@ footer {
     height: 400px;
 }
 
+table th {
+    width: 20px;
+}
+
+table th:nth-of-type(2) {
+    width: 50px;
+    text-align: left;
+}
+
 @media (max-width:1000px) {
     table {
         font-size: 0.5em;
